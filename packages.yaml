@@ -1,0 +1,433 @@
+---
+# List of packages to be installed via the package manager.
+#
+# This is derived from the Infochimps machetEC2 package:
+#
+# http://github.com/infochimps/machetec2
+#
+# and merged with packages from bioperl-max:
+#
+# http://fortinbras.us/bioperl-max/
+#
+# and biolinux:
+#
+# http://www.jcvi.org/cms/research/projects/jcvi-cloud-biolinux/included-software/
+#
+# Package names are the terminal symbols in the tree (the text on any
+# line which begins with whitespace followed by a hypen and a space).
+#
+# The package list is organized taxonomically so that parts of it can
+# be selectively installed/ignored. See main.yaml for top level configuration.
+minimal:
+  #Packages to support a minimal installation (no X!)
+  administration:
+    - sudo
+    - htop
+  editors:
+    - vim
+    # don't put in emacs, as it pulls in X
+  version_control:
+    - git-core
+    - cvs
+    - subversion
+    - mercurial
+    - bzr
+    - darcs
+  build:
+    - make
+    - gcc
+    - g++
+    - gfortran
+    - patch
+    - cmake
+    - swig
+  util:
+    - axel
+    - rsync
+    - openssh-server
+    - screen
+    - unzip
+    - tar
+    - less
+  network:
+    - curl
+    - wget
+desktop:
+  #Packages to support a remote desktop
+  all:
+    - gnome-panel
+    - gnome-system-tools
+    - synaptic
+    - software-center
+    - freenx-server
+    - gnome-backgrounds
+    - gnome-terminal
+    - firefox
+    - evince
+    - cloudbl-desktop
+    - bio-linux-tutorials
+    - xvfb
+    - gdm
+  # NX compatible window managers on 11.10; only for oneiric
+  ubuntu_oneiric:
+    - gnome-session-fallback
+    - unity-2d
+  ubuntu_lucid:
+    - rubygems
+desktop-cloud:
+  # some special purpose VMs, such as BOINC, only require a minimal desktop
+  - lxde
+  - vnc4server
+programming:
+  editors:
+    - emacs
+    - emacs-goodies-el
+    - emacsen-common
+    - exuberant-ctags
+    - gedit
+  documentation:
+    - texlive-latex-base
+    - texlive-latex-recommended
+    - texlive-latex-extra
+  build:
+    - swig
+    - cmake
+    - libcurl4-openssl-dev
+    - libxml2
+    - libxml2-dev
+    - libxslt1-dev
+    - libxslt1.1
+    - libgsl0-dev
+    - libgsl0ldbl
+    - gsl-bin
+    - xfsprogs
+    - libc6-dev
+    - libzip-dev
+    - libbz2-dev
+    - zlib1g-dev
+    - xz-utils
+    - liblzma-dev
+    - libgtk2.0-dev
+    - libncurses5-dev
+    - zlib1g-dev
+    - libssl-dev
+    - libpcre3
+    - libpcre3-dev
+    - libreadline-dev
+    - mime-support
+    - gcc
+    - g++
+    - gfortran
+    - stow
+    - rsync
+    - python-software-properties
+    - protobuf-compiler
+  filesystem:
+    - libfuse-dev
+    - fuse-utils
+  libraries:
+    - libatlas-base-dev
+    #- libatlas-dev
+    - libblas-dev
+    - liblapack-dev
+    - libeigen3-dev
+    - tcl-dev
+    - tk-dev
+    - imagemagick
+    - pdfjam
+    - libsparsehash-dev
+    - xvfb
+    - libboost-dev
+    - libboost-python-dev
+    - libboost-thread-dev
+    - libgd2-xpm
+    - libgd2-xpm-dev
+    - libgnomecanvas2-0
+    - libgnomecanvas2-dev
+    - libgnomevfs2-0
+    - libgnomevfs2-dev
+    - libgnomeui-0
+    - libgnomeui-dev
+    - libpango1.0-0
+    - libpango1.0-dev
+    - libx11-dev
+  packaging:
+    - build-essential
+    - devscripts
+    - debhelper
+    - dh-make
+    - pbuilder
+    - unzip
+  virtual:
+    - dkms
+  util:
+    - mc
+    - tree
+    - screen
+    - time
+    - fdupes
+  network:
+    - lynx
+    - traceroute
+  lang:
+    - aspell
+    - dictionaries-common
+    - libaspell-dev
+distributed:
+  all:
+    - rabbitmq-server
+    - nfs-kernel-server
+    - nfs-common
+    - libhdfs0-dev
+    - libopenmpi-dev
+    - libopenmpi1.3
+    - openmpi-bin
+    - libzmq-dev
+    - libfuse-dev
+  # only for oneiric 11.10
+  ubuntu_oneiric:
+    - libmpich2-3
+    - libmpich2-dev
+    - mpich2
+amazon:
+  - s3cmd
+  - euca2ools
+  - ec2-ami-tools
+  - ec2-api-tools
+  - python-vm-builder-ec2
+python:
+  meta:
+    - python
+    - python-dev
+    - python-setuptools
+    - python-distutils-extra
+    - python-pip
+  wrappers:
+    - python-rpy
+ruby:
+  - ruby1.9.1 # default Ruby install
+  - ruby1.9.1-dev
+  - ruby1.8
+  - ruby1.8-dev
+r:
+  - r-base
+  - r-base-core
+  - r-base-dev
+  - r-base-html
+perl:
+  - perl-base
+  - perl
+  - libperl-dev
+  - perl-modules
+  - perl-tk
+  - parrot
+  - parrot-devel
+java:
+  - openjdk-6-jdk
+  - openjdk-6-jre
+  - openjdk-7-jdk
+  - openjdk-7-jre
+  - ant
+  - libbiojava-java
+  - libbiojava-java-demos
+  - maven2
+  - libjline-java
+  - libjhdf5-java
+  - clojure
+  - jruby
+  - scala
+  - scala-library
+erlang:
+  - erlang
+  - erlang-base
+  - erlang-dev
+  - erlang-examples
+  - erlang-manpages
+  - erlang-mode
+haskell:
+  - ghc6
+  - cabal-install
+  - c2hs
+databases:
+  postgres:
+    - postgresql
+    - postgresql-client
+    - postgresql-plpython-8.4
+    - postgresql-plperl-8.4
+    - libpq-dev
+  sqlite:
+    - libsqlite0
+    - libsqlite0-dev
+    - libsqlite3-0
+    - libsqlite3-dev
+    - sqlite3
+math:
+  - prover9
+  - octave3.2
+viz:
+  - imagemagick
+  - x11-apps
+  - mayavi2
+  - mtasc # for modest maps
+  - gnuplot
+  - graphviz
+  - libgraphviz-dev
+  - libgl1-mesa-dev
+  - libgl1-mesa-dri
+  - libgl1-mesa-glx
+  - libglu1-mesa
+  - libglu1-mesa-dev
+web:
+  - apache2
+boinc:
+  - boinc-client
+  - boinc-manager
+bio_general:
+  - primer3
+  - readseq
+  - bio-linux-xcut
+  - emboss
+  - emboss-data
+  - emboss-lib
+  - ugene
+  # - bio-linux-taverna # Broken graphviz dependency
+bio_search:
+  - blast2
+  - hmmer
+  - ncbi-tools-bin
+  - bio-linux-blast+
+  - bio-linux-blixem
+  - bio-linux-fasta
+  - bio-linux-mspcrunch
+  - bio-linux-mview
+  - bio-linux-nrdb
+bio_alignment:
+  - clustalw
+  - exonerate
+  - mafft
+  - muscle
+  - mummer
+  - probcons
+  - t-coffee
+  - bio-linux-seaview
+  - bio-linux-clustal # Version problem
+  - bio-linux-dotter
+  - bio-linux-jalview # Version problem
+  - bio-linux-pfaat
+  - bio-linux-prank
+  - bio-linux-squint
+  - bio-linux-wise2
+bio_nextgen:
+  - fastx-toolkit
+  - maq
+  - plink
+  - last-align
+  - tabix
+  # - samtools # very old version
+bio_sequencing:
+  - bio-linux-assembly-conversion-tools
+  - bio-linux-cap3
+  - bio-linux-dust
+  - bio-linux-lucy
+  - bio-linux-staden
+  - bio-linux-stars
+  # Install problems with emboss: - bio-linux-msatfinder
+  #- bio-linux-mira # need mira-assembler but gone from repo
+  #- bio-linux-mira-3rd-party
+bio_annotation:
+  - mcl
+  - tigr-glimmer
+  - bio-linux-big-blast
+  - bio-linux-cd-hit
+  - bio-linux-estscan
+  - bio-linux-glimmer3
+  - bio-linux-partigene
+  - bio-linux-prot4est
+  - bio-linux-rbs-finder
+  - bio-linux-transterm-hp
+  - bio-linux-trnascan
+  - bio-linux-tetra
+  # Conflict: - bio-linux-act
+  # Conflict: - bio-linux-artemis
+  # 500Mb of disk: - bio-linux-priam
+  # Package broken: - bio-linux-yamap
+bio_microarray:
+  - bio-linux-ocount
+  - bio-linux-oligoarray
+  - bio-linux-oligoarrayaux
+bio_visualization:
+  - rasmol
+  - bio-linux-clcsequenceviewer
+  - bio-linux-maxd
+bio_utils:
+  - bio-linux-das-prep
+  - bio-linux-exchanger
+  - bio-linux-genquery
+  - bio-linux-keyring
+  - bio-linux-base-directories
+  - bio-linux-bldp-files
+  - bio-linux-sampledata
+  - bio-linux-sequin # Version problem
+  - bio-linux-taxinspector
+  - bio-linux-themes-v5
+phylogeny_testing:
+  # new packages in testing (Debian 'wheezy')
+  all:
+    - debian-archive-keyring
+    - raxml
+    # - mrbayes-mpi broken, should eventually replace biolinux-mrbayes-multi
+phylogeny_experimental:
+  # new packages in experimental
+  all:
+    - paml        # should replace biolinux-paml
+phylogeny:
+  all:
+    - phylip
+    - phyml
+    - mrbayes
+    - njplot
+    - tree-puzzle
+    #- bio-linux-arb # Broken, needs libmotif3
+    # biolinux-ape package is source (i386). It needs R - not in deps - and
+    # /usr/local/bioinf/ape# R CMD INSTALL ape (FIXME)
+    # - bio-linux-ape
+    - bio-linux-coalesce
+    - bio-linux-dendroscope
+    - bio-linux-fastDNAml # Version problem
+    - bio-linux-fluctuate
+    - bio-linux-forester
+    - bio-linux-happy
+    - bio-linux-mesquite
+    - bio-linux-migrate
+    - bio-linux-mrbayes-multi
+    #- bio-linux-mothur
+    - bio-linux-paml
+    - bio-linux-omegamap
+    - bio-linux-qtlcart
+    - bio-linux-recombine
+    - bio-linux-splitstree
+    - bio-linux-treeview # Version problem
+  needs_64bit:
+    - bio-linux-fasttree
+# To do -- in Deb Med but not propogated
+# squizz
+# biomaj
+#
+# To Add -- need packages
+# from bioperl-max:
+#   hyphy
+#   bioperl-db
+#   more perl modules
+# from bio-linux:
+#   Celera Assembler
+#   lamarc - not available just now (22/6/10)
+#   peptidemapper
+#   pftools
+#   transterm
+# Others:
+#   mdust
+#   IGV
+#   trimpoly
+#   blast2go
+#   sputnik: microsattelites
+#   GenomeView

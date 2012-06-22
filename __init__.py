@@ -1,0 +1,3 @@
+"""
+    NeCTAR Research Cloud flavor
+"""
