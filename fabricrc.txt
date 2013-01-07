@@ -15,10 +15,6 @@ dist_name = quantal
 #distribution = debian
 #dist_name = squeeze
 
-# Specify flavor (only if used)
-flavor = GVLFlavor
-flavor_path = nectar.nectarflavor
-
 # -- Installation details
 
 # Unset to avoid CloudBioLinux customizations like setup scripts;

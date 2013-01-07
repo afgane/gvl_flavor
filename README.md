@@ -44,10 +44,7 @@ edit the following files (all in ``<project_home>/cloudbiolinux/contrib/flavor/g
 * ``fabricrc.txt`` - to define the paths where software should be installed on
   the remote system
 
-Once all the configuration has been done, rewrite the default ``*.yaml`` files
-in CBL with the custom ones: copy
-``<project_home>/cloudbiolinux/contrib/flavor/gvl/*.yaml`` to
-``<project_home>/config/.`` and run the CBL scripts. The invocation
+Once all the configuration has been done run the CBL scripts. The invocation
 of these scripts may depend a bit on what you are trying to achieve, but should
 look something like this (take a look at the [CBL documentation][4] for more
 about the available scripts and options; also, to actually use the custom
