@@ -1,5 +1,5 @@
-Genomics Virtual Lab (GVL) flavor for CBL
-=========================================
+Genomics Virtual Lab (GVL) flavor for CloudBioLinux
+===================================================
 
 About
 -----
@@ -8,8 +8,8 @@ CBL images on the [NeCTAR cloud][2] as part of the [Genomics Virtual Laboratory]
 
 Installation
 ------------
-To install, first clone CBL from [its Git repository][4] (if you do not already
-have it). Then, change into ``cloudbiolinux/contrib/flavor/`` directory and
+To install, first clone CBL from [its Git repository][4] (if you have already
+done that). Then, change into ``cloudbiolinux/contrib/flavor/`` directory and
 clone this flavor:
 
     $ cd <project_home>
@@ -37,20 +37,33 @@ edit the following files (all in ``<project_home>/cloudbiolinux/contrib/flavor/n
 
 * ``main.yaml`` - to define the list of meta-packages to be
   installed
-* ``packages.yaml`` - to define the exact list of packages to be
+* ``packages.yaml`` - to define the exact list of system packages to be
   installed (this is in part defined by the list from ``main.yaml``)
-* ``fabricrc_nectar.txt`` - to define the paths of where stuff
+* ``*-libs.yaml`` - to define specific language libraries to be installed
+  (this is in part defined by the list from ``main.yaml``)
+* ``fabricrc_nectar.txt`` - to define the paths of where software
   should be installed on the remote system
 
-Once all the configuration has been done, run the CBL scripts. The invocation
+Once all the configuration has been done, rewrite the default ``*.yaml`` files
+in CBL with the custom ones: copy
+``<project_home>/cloudbiolinux/contrib/flavor/nectar/*.yaml`` to
+``<project_home>/config/.`` and run the CBL scripts. The invocation
 of these scripts may depend a bit on what you are trying to achieve, but should
 look something like this (take a look at the [CBL documentation][4] for more
-about the available scripts and options):
+about the available scripts and options; also, to actually use the custom
+``fabricrc_nectar.txt``, specify it with
+``-c <project_home>/cloudbiolinux/contrib/flavor/nectar/fabricrc_nectar.txt``):
 
-    $ fab -f fabfile.py -u ubuntu -i <key> -H <IP> \
-      -c ./contrib/flavor/nectar/fabricrc_nectar.txt \
-      install_biolinux:target=packages,packagelist=./contrib/flavor/nectar/main.yaml,\
-      flavor=nectar,pkg_config_file_path=./contrib/flavor/nectar/packages.yaml
+    $ fab -i <key> -H ubuntu@<IP> install_biolinux:target=packages,flavor=nectar
+    $ fab -i <key> -H ubuntu@<IP> install_biolinux:target=libraries,flavor=nectar
+    $ fab -i <key> -H ubuntu@<IP> install_biolinux:target=post_install,flavor=nectar
+
+
+Once all the packages and libraries have been installed, clean the image and
+then create a snapshot from it via the cloud console:
+
+    $ fab -i <key> -H ubuntu@<IP> install_biolinux:target=cleanup
+
 
 [1]: http://cloudbiolinux.org/
 [2]: http://nectar.org.au/research-cloud

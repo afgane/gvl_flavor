@@ -47,7 +47,6 @@ minimal:
     - openssh-server
     - screen
     - unzip
-    - tar
     - less
   network:
     - curl
@@ -64,11 +63,12 @@ desktop:
     - gnome-terminal
     - firefox
     - evince
+    - ubuntu-desktop
     - cloudbl-desktop
     - bio-linux-tutorials
     - xvfb
     - gdm
-  # NX compatible window managers on 11.10; only for oneiric
+  # NX compatible window managers on Ubuntu 11.10+
   ubuntu_oneiric:
     - gnome-session-fallback
     - unity-2d
@@ -111,10 +111,11 @@ programming:
     - libncurses5-dev
     - zlib1g-dev
     - libssl-dev
-    - libpcre3
     - libpcre3-dev
     - libreadline-dev
     - mime-support
+    - uuid
+    - uuid-dev
     - gcc
     - g++
     - gfortran
@@ -159,6 +160,7 @@ programming:
     - pbuilder
     - unzip
   virtual:
+    # - virtualbox-4.1
     - dkms
   util:
     - mc
@@ -173,14 +175,22 @@ programming:
     - aspell
     - dictionaries-common
     - libaspell-dev
+# Note that the following Cloudera hadoop installation is for test
+# purposes "inside the instance" only, Amazon already provides a
+# production-ready Elastic MapReduce platform:
+# http://aws.amazon.com/elasticmapreduce/
 distributed:
   all:
     - rabbitmq-server
     - nfs-kernel-server
     - nfs-common
-    - libhdfs0-dev
+    # - hadoop-0.20
+    # - hadoop-pig
+    # - hadoop-hive
+    # - libhdfs0-dev
+    # - hadoop-0.20-pipes
+    # - hadoop-0.20-source
     - libopenmpi-dev
-    - libopenmpi1.3
     - openmpi-bin
     - libzmq-dev
     - libfuse-dev
@@ -201,21 +211,22 @@ python:
     - python-dev
     - python-setuptools
     - python-distutils-extra
+    # - python3
+    # - python3-dev
     - python-pip
   wrappers:
     - python-rpy
 ruby:
   - ruby1.9.1 # default Ruby install
   - ruby1.9.1-dev
-  - ruby1.8
-  - ruby1.8-dev
+  # - ruby1.8
+  # - ruby1.8-dev
 r:
   - r-base
   - r-base-core
   - r-base-dev
   - r-base-html
 perl:
-  - perl-base
   - perl
   - libperl-dev
   - perl-modules
@@ -223,18 +234,23 @@ perl:
   - parrot
   - parrot-devel
 java:
-  - openjdk-6-jdk
-  - openjdk-6-jre
+  # - sun-java6-bin # Sun Java removed from Ubuntu package repositories
+  # - sun-java6-jre # Package 'sun-java6-jre' has no installation candidate
+  # - sun-java6-jdk Package 'sun-java6-jdk' has no installation candidate
+  # - openjdk-6-jdk
+  # - openjdk-6-jre
   - openjdk-7-jdk
   - openjdk-7-jre
   - ant
   - libbiojava-java
   - libbiojava-java-demos
+  # - eclipse
   - maven2
   - libjline-java
   - libjhdf5-java
   - clojure
   - jruby
+  - jython
   - scala
   - scala-library
 erlang:
@@ -249,11 +265,16 @@ haskell:
   - cabal-install
   - c2hs
 databases:
+  mysql:
+    - mysql-client
+    - mysql-common
+    - mysql-server
+    - libmysqlclient15-dev
   postgres:
     - postgresql
     - postgresql-client
-    - postgresql-plpython-8.4
-    - postgresql-plperl-8.4
+    - postgresql-plpython-9.1
+    - postgresql-plperl-9.1
     - libpq-dev
   sqlite:
     - libsqlite0
@@ -261,9 +282,19 @@ databases:
     - libsqlite3-0
     - libsqlite3-dev
     - sqlite3
+  document:
+    # - libdb-dev
+    # - mongodb-10gen
+    # - couchdb
+    # - tokyocabinet-bin
+    # - libtokyocabinet9
+    # - libtokyocabinet-dev
+  hdf:
+    # - libhdf5-7
+    # - libhdf5-dev
 math:
   - prover9
-  - octave3.2
+  - octave
 viz:
   - imagemagick
   - x11-apps
@@ -284,92 +315,96 @@ boinc:
   - boinc-manager
 bio_general:
   - primer3
-  - readseq
-  - bio-linux-xcut
+  - bio-linux-catchall
+  # - bio-linux-emboss
+  - bio-linux-readseq
   - emboss
   - emboss-data
   - emboss-lib
+  - jemboss
   - ugene
-  # - bio-linux-taverna # Broken graphviz dependency
 bio_search:
   - blast2
-  - hmmer
   - ncbi-tools-bin
-  - bio-linux-blast+
+  - bio-linux-blast
   - bio-linux-blixem
   - bio-linux-fasta
+  - bio-linux-hmmer
   - bio-linux-mspcrunch
   - bio-linux-mview
-  - bio-linux-nrdb
+  # - bio-linux-nrdb # broken Depends: ia32-libs
+  - cdbfasta
 bio_alignment:
-  - clustalw
+  - bio-linux-clustal
+  - bio-linux-dotter
+  - bio-linux-jalview
+  - bio-linux-mcl
+  - bio-linux-mummer
+  - bio-linux-pfaat
+  - bio-linux-seaview
+  - bio-linux-squint
+  - bio-linux-t-coffee
   - exonerate
   - mafft
   - muscle
-  - mummer
-  - probcons
-  - t-coffee
-  - bio-linux-seaview
-  - bio-linux-clustal # Version problem
-  - bio-linux-dotter
-  - bio-linux-jalview # Version problem
-  - bio-linux-pfaat
   - bio-linux-prank
-  - bio-linux-squint
-  - bio-linux-wise2
+  - probcons
+  - wise
 bio_nextgen:
+  - bio-linux-fastqc
   - fastx-toolkit
   - maq
   - plink
   - last-align
   - tabix
-  # - samtools # very old version
+  - samtools # now up-to-date again
 bio_sequencing:
-  - bio-linux-assembly-conversion-tools
+  #- bio-linux-assembly-conversion-tools # broken Depends: bio-linux-staden
   - bio-linux-cap3
   - bio-linux-dust
   - bio-linux-lucy
-  - bio-linux-staden
-  - bio-linux-stars
-  # Install problems with emboss: - bio-linux-msatfinder
-  #- bio-linux-mira # need mira-assembler but gone from repo
-  #- bio-linux-mira-3rd-party
+  - bio-linux-mira
+  - bio-linux-mira-3rd-party
+  # - bio-linux-staden # broken Depends: ia32-libs
+  # - bio-linux-stars # broken Depends: bio-linux-staden
+  - bio-linux-tablet
 bio_annotation:
   - mcl
+  - predictprotein
   - tigr-glimmer
+  - bio-linux-artemis
   - bio-linux-big-blast
   - bio-linux-cd-hit
   - bio-linux-estscan
   - bio-linux-glimmer3
-  - bio-linux-partigene
-  - bio-linux-prot4est
+  - bio-linux-jprofilegrid
+  - bio-linux-msatfinder
+#   - bio-linux-prot4est - broken, fix in progress
   - bio-linux-rbs-finder
   - bio-linux-transterm-hp
   - bio-linux-trnascan
-  - bio-linux-tetra
-  # Conflict: - bio-linux-act
-  # Conflict: - bio-linux-artemis
+  # - bio-linux-tetra # broken Depends: ia32-libs
   # 500Mb of disk: - bio-linux-priam
-  # Package broken: - bio-linux-yamap
+bio_markergenes:
+  - bio-linux-ampliconnoise
+  - bio-linux-jmotu
+  - bio-linux-mothur
+  - bio-linux-rdp-classifier
+  - bio-linux-qiime
 bio_microarray:
-  - bio-linux-ocount
+  #- bio-linux-ocount # broken Depends: ia32-libs
   - bio-linux-oligoarray
   - bio-linux-oligoarrayaux
 bio_visualization:
   - rasmol
-  - bio-linux-clcsequenceviewer
-  - bio-linux-maxd
+  # - bio-linux-clcsequenceviewer # Awaiting fix
 bio_utils:
-  - bio-linux-das-prep
-  - bio-linux-exchanger
   - bio-linux-genquery
   - bio-linux-keyring
-  - bio-linux-base-directories
   - bio-linux-bldp-files
   - bio-linux-sampledata
-  - bio-linux-sequin # Version problem
   - bio-linux-taxinspector
-  - bio-linux-themes-v5
+  - bio-linux-xcut
 phylogeny_testing:
   # new packages in testing (Debian 'wheezy')
   all:
@@ -387,28 +422,96 @@ phylogeny:
     - mrbayes
     - njplot
     - tree-puzzle
-    #- bio-linux-arb # Broken, needs libmotif3
-    # biolinux-ape package is source (i386). It needs R - not in deps - and
-    # /usr/local/bioinf/ape# R CMD INSTALL ape (FIXME)
-    # - bio-linux-ape
-    - bio-linux-coalesce
+    - bio-linux-arb
+    - bio-linux-archaeopteryx
+    - bio-linux-cytoscape
     - bio-linux-dendroscope
-    - bio-linux-fastDNAml # Version problem
-    - bio-linux-fluctuate
-    - bio-linux-forester
-    - bio-linux-happy
+    - bio-linux-fastdnaml
+    #- bio-linux-happy # broken Depends: ia32-libs
     - bio-linux-mesquite
-    - bio-linux-migrate
-    - bio-linux-mrbayes-multi
-    #- bio-linux-mothur
+    - bio-linux-mrbayes
     - bio-linux-paml
     - bio-linux-omegamap
     - bio-linux-qtlcart
-    - bio-linux-recombine
     - bio-linux-splitstree
-    - bio-linux-treeview # Version problem
+    - bio-linux-treeview
   needs_64bit:
     - bio-linux-fasttree
+## Package lists imported from mi-deployment.
+cloudman:
+  all:
+    # Required to install CloudMan-required Python libraries
+    - python-pip
+    # Required for communication between instances
+    - rabbitmq-server
+    # Required to handle data volumes (including LVM support)
+    - lvm2
+    - dmsetup
+    # - mdadm
+    - reiserfsprogs
+    - xfsprogs
+    # Required to compile nginx
+    - build-essential
+    #- gcc ## included in minimal
+    - libpcre3-dev
+    - libssl-dev
+    - stow
+    # Required for cluster-wide NFS file system
+    - nfs-kernel-server
+    - nfs-common
+    # Enable OpenMPI
+    - libopenmpi-dev
+    - libopenmpi1.3
+    - openmpi-bin
+    - openmpi-common
+    # Needed to enable updates for Galaxy
+    # - mercurial ## Included in minimal
+    # Required for compiling ProFTPd (must match installed PostgreSQL version!)
+    - postgresql-server-dev-9.1
+    # Actually not sure what of the following is really needed
+    - libboost-all-dev
+    - libreadline6-dev
+    # Required for s3fs
+    - libfuse-dev
+    - pkg-config
+    - fuse-utils
+    - libcurl4-openssl-dev
+    - libxml2-dev
+    - mime-support
+galaxy:
+  all:
+    - postgresql
+    - gfortran
+    - default-jdk
+    - python-rpy
+    - xvfb
+    # Parallel file download (used by the Galaxy ObjectStore)
+    - axel
+    # Required by Freebayes
+    - cmake
+    # Required by BWA
+    - zlib1g-dev
+    # Required by Samtools
+    - libncurses5-dev
+    # Required by Compute q-values
+    - liblzma-dev
+    - r-base
+    - r-base-core
+    - r-base-dev
+    - r-cran-lattice
+    - r-cran-qvalue
+    # Required by HVIS
+    - r-bioc-hilbertvis
+    # Required by various R modules
+    - tcl-dev
+    # Required by various R modules
+    - tk-dev
+    # Required by RGalaxy
+    - imagemagick
+    - pdfjam
+    - python-scipy
+    - libsparsehash-dev
+
 # To do -- in Deb Med but not propogated
 # squizz
 # biomaj

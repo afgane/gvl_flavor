@@ -1,7 +1,7 @@
 ---
 # Top level configuration file that specifies which groups of programs
 # should be installed. New sections that are added to individual config
-# files should go here. Comment out any groups you don't want to have 
+# files should go here. Comment out any groups you don't want to have
 # installed.
 packages:
   - minimal
@@ -14,12 +14,13 @@ packages:
   - ruby
   - perl
   - java
-  - erlang
-  - haskell
+  # - erlang
+  # - haskell
   - databases
-  - math
+  # - math
   - viz
-  - web
+  # - web
+  - boinc
   - bio_general
   - bio_search
   - bio_alignment
@@ -33,7 +34,7 @@ packages:
   - galaxy
   - cloudman
 libraries:
-  - haskell-libs
+  # - haskell-libs
   - perl-libs
   - python-libs
   - r-libs
