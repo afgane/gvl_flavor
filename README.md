@@ -41,26 +41,19 @@ edit the following files (all in ``<project_home>/cloudbiolinux/contrib/flavor/g
   installed (this is in part defined by the list from ``main.yaml``)
 * ``*-libs.yaml`` - to define specific language libraries to be installed
   (this is in part defined by the list from ``main.yaml``)
+* ``tools.yaml`` - to define a list of tools and their versions that will be
+  installed as Galaxy-dependencies
 * ``fabricrc.txt`` - to define the paths where software should be installed on
   the remote system
 
-Once all the configuration has been done run the CBL scripts. The invocation
-of these scripts may depend a bit on what you are trying to achieve, but should
-look something like this (take a look at the [CBL documentation][4] for more
-about the available scripts and options; also, to actually use the custom
-``fabricrc.txt``, specify it with
-``-c <project_home>/cloudbiolinux/contrib/flavor/gvl/fabricrc.txt``):
+Once all the configuration has been done run the CBL scripts:
 
-    $ fab -i <key> -H ubuntu@<IP> install_biolinux:target=packages,flavor=gvl
-    $ fab -i <key> -H ubuntu@<IP> install_biolinux:target=libraries,flavor=gvl
-    $ fab -i <key> -H ubuntu@<IP> install_biolinux:target=post_install,flavor=gvl
-
+    $ fab -i <key> -H ubuntu@<IP> -c contrib/flavor/gvl/fabricrc.txt install_biolinux:target=gvl
 
 Once all the packages and libraries have been installed, clean the image and
 then create a snapshot from it via the cloud console:
 
     $ fab -i <key> -H ubuntu@<IP> install_biolinux:target=cleanup
-
 
 [1]: http://cloudbiolinux.org/
 [2]: http://nectar.org.au/research-cloud
