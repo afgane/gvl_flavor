@@ -45,7 +45,7 @@ use_sudo = True
 # -- Details about reference data installation
 
 # Path where biological reference data files should be retrieved to
-data_files = /mnt/biodata
+data_files = /mnt/galaxyIndices
 
 # --  Details about installing Galaxy and its dependencies. Values behind the
 #     comments are the defaults.
@@ -54,10 +54,10 @@ data_files = /mnt/biodata
 #galaxy_user = galaxy
 
 # Path where Galaxy application is installed
-#galaxy_home = /mnt/galaxyTools/galaxy-central
+galaxy_home = /mnt/galaxy/galaxy-dist
 
 # URL for the Galaxy application source code repository
-#galaxy_repository = https://bitbucket.org/galaxy/galaxy-central/
+galaxy_repository = https://bitbucket.org/galaxy/galaxy-dist/
 
 # If ``True``, Galaxy repository will not be custom-configured after being cloned
 # The customization details are primarily targeted at a cloud deployment; for
@@ -71,24 +71,24 @@ data_files = /mnt/biodata
 #galaxy_setup_xvfb = False
 
 # Location of Galaxy's .loc files
-#galaxy_loc_files = /mnt/biodata/galaxy/galaxy-data
+galaxy_loc_files = /mnt/galaxy/galaxy-data
 
 # Galaxy requires Java tools to have their jar files places in a specific
 # directory, so specify it here.
-#galaxy_jars_dir = /mnt/galaxyTools/galaxy-central/tool-data/shared/jars
+galaxy_jars_dir = /mnt/galaxy/galaxy-data/shared/jars
 
 # If ``True``, install a set of tools considered as Galaxy dependencies
-#galaxy_install_dependencies = False
+galaxy_install_dependencies = True
 
 # Specify a custom location to a YAML file containing a list of tools to
 # install as Galaxy dependencies
-#galaxy_tools_conf = contrib/cloudman/tools.yaml
+galaxy_tools_conf = contrib/flavor/gvl/tools.yaml
 
 # Location where (some?!) Galaxy dependency tools should be installed
-#galaxy_tools_dir = /mnt/galaxyTools/tools
+galaxy_tools_dir = /mnt/galaxy/tools
 
 # If ``True``, install R packages listed in contrib/cloudman/tools.yaml
-#galaxy_install_r_packages = False
+galaxy_install_r_packages = True
 
 # Paths for respective file systems that will be added to ``/etc/exports``
 # and thus exported via NFS when the operating system boots
@@ -99,6 +99,10 @@ data_files = /mnt/biodata
 
 
 # -- Tool-specific configurations
+
+# A location of a custom nginx.conf or a comparable template, respectively.
+nginx_conf_template_path = contrib/flavor/gvl/nginx.conf.template
+#nginx_conf_path = path/to/custom/nginx.conf
 
 # Picard home
 picard_home = /usr/share/java/picard
