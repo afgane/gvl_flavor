@@ -5,37 +5,37 @@
 # installed.
 packages:
   - minimal
-  - desktop
-  - programming
-  - distributed
+  # - desktop
+  # - programming
+  # - distributed
   - amazon
-  - python
-  - r
-  - ruby
-  - perl
-  - java
-  # - erlang
-  # - haskell
+  # - python
+  # - r
+  # - ruby
+  # - perl
+  # - java
+  # # - erlang
+  # # - haskell
   - databases
-  # - math
-  - viz
-  # - web
-  - boinc
-  - bio_general
-  - bio_search
-  - bio_alignment
-  - bio_nextgen
-  - bio_sequencing
-  - bio_annotation
-  - bio_microarray
-  - bio_visualization
-  - bio_utils
-  - phylogeny
+  # # - math
+  # - viz
+  # # - web
+  # - boinc
+  # - bio_general
+  # - bio_search
+  # - bio_alignment
+  # - bio_nextgen
+  # - bio_sequencing
+  # - bio_annotation
+  # - bio_microarray
+  # - bio_visualization
+  # - bio_utils
+  # - phylogeny
   - galaxy
   - cloudman
 libraries:
   # - haskell-libs
-  - perl-libs
-  - python-libs
-  - r-libs
-  - ruby-libs
+  # - perl-libs
+  # - python-libs
+  # - r-libs
+  # - ruby-libs
