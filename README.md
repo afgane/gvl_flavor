@@ -48,7 +48,7 @@ edit the following files (all in ``<project_home>/cloudbiolinux/contrib/flavor/g
 
 Once all the configuration has been done run the CBL scripts:
 
-    $ fab -i <key> -H ubuntu@<IP> -c contrib/flavor/gvl/fabricrc.txt install_biolinux:target=gvl
+    $ fab -i <key> -H ubuntu@<IP> -c contrib/flavor/gvl/fabricrc.txt install_biolinux:flavor=gvl
 
 Once all the packages and libraries have been installed, clean the image and
 then create a snapshot from it via the cloud console:
