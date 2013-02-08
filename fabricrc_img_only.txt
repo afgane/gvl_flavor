@@ -26,7 +26,7 @@ edition = cloudbiolinux
 
 # Whether to clean the system for EC2 AMI preparation;
 # do not set on vagrant or local machines
-is_ec2_image = true
+is_ec2_image = false
 
 # Global installation directory for packages and standard programs
 system_install = /usr
@@ -70,13 +70,13 @@ galaxy_repository = https://bitbucket.org/galaxy/galaxy-dist/
 # A path to the binaries for interacting with PostgreSQL
 #postgres_bin_dir = /usr/lib/postgresql/9.1/bin
 #postrges_user = postgres
-postgres_port = 5840
+#postgres_port = 5840
 
 # If ``True``, setup and initialize Postgres database for use by Galaxy
 # according to the following options
-galaxy_setup_database = True
+galaxy_setup_database = false
 #galaxy_db_name = galaxy
-galaxy_database_path = /mnt/galaxy/db
+#galaxy_database_path = /mnt/galaxy/db
 #galaxy_ftp_user_password = fu5yOj2sn
 #galaxy_universe_wsgi_url = https://bitbucket.org/galaxy/cloudman/raw/tip/universe_wsgi.ini.cloud
 
@@ -91,10 +91,10 @@ galaxy_database_path = /mnt/galaxy/db
 
 # Galaxy requires Java tools to have their jar files places in a specific
 # directory, so specify it here.
-galaxy_jars_dir = /mnt/galaxy/galaxy-app/tool-data/shared/jars
+#galaxy_jars_dir = /mnt/galaxy/galaxy-app/tool-data/shared/jars
 
 # If ``True``, install a set of tools considered as Galaxy dependencies
-galaxy_install_dependencies = True
+galaxy_install_dependencies = false
 
 # Specify a custom location to a YAML file containing a list of tools to
 # install as Galaxy dependencies

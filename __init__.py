@@ -1,3 +1,3 @@
 """
-    NeCTAR Research Cloud flavor
+    Genomics Virtual Lab (GVL) flavor for CloudBioLinux
 """

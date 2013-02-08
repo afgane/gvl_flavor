@@ -20,7 +20,7 @@ packages:
   # # - math
   # - viz
   # # - web
-  # - boinc
+  - boinc
   # - bio_general
   # - bio_search
   # - bio_alignment
@@ -37,5 +37,5 @@ libraries:
   # - haskell-libs
   # - perl-libs
   # - python-libs
-  # - r-libs
+  - r-libs
   # - ruby-libs

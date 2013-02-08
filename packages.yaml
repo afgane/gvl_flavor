@@ -479,6 +479,8 @@ cloudman:
     - libcurl4-openssl-dev
     - libxml2-dev
     - mime-support
+    # Required to get HTCondor
+    - condor
 galaxy:
   all:
     - postgresql
