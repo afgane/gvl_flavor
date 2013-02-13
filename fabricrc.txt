@@ -26,7 +26,7 @@ edition = cloudbiolinux
 
 # Whether to clean the system for EC2 AMI preparation;
 # do not set on vagrant or local machines
-is_ec2_image = true
+is_ec2_image = false
 
 # Global installation directory for packages and standard programs
 system_install = /usr
@@ -104,7 +104,7 @@ galaxy_tools_conf = contrib/flavor/gvl/tools.yaml
 galaxy_tools_dir = /mnt/galaxy/tools
 
 # If ``True``, install R packages listed in contrib/cloudman/tools.yaml
-galaxy_install_r_packages = True
+galaxy_install_r_packages = false
 
 # Paths for respective file systems that will be added to ``/etc/exports``
 # and thus exported via NFS when the operating system boots
