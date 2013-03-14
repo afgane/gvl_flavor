@@ -41,6 +41,7 @@ minimal:
     - patch
     - cmake
     - swig
+    - ant
   util:
     - axel
     - rsync
@@ -48,6 +49,8 @@ minimal:
     - screen
     - unzip
     - less
+    - ipython
+    - atop
   network:
     - curl
     - wget
