@@ -1,0 +1,12 @@
+system:
+  - s3fs
+python:
+  - bx-python
+  - rpy
+analysis:
+  - samtools
+cloudman:
+  - nginx
+  - proftpd
+  - sge
+  - novnc
