@@ -42,6 +42,9 @@ minimal:
     - cmake
     - swig
     - ant
+    # Required by cloud-init on Ubuntu 12.04
+    - software-properties-common
+    - python-prettytable
   util:
     - axel
     - rsync
@@ -277,7 +280,7 @@ databases:
     - postgresql
     - postgresql-client
     - postgresql-plpython-9.1
-    - postgresql-plperl-9.1
+    # - postgresql-plperl-9.1
     - libpq-dev
   sqlite:
     - libsqlite0

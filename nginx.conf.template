@@ -32,10 +32,10 @@ http {
     }
 
     server {
-        listen       80;
+        listen 80;
         client_max_body_size 2048m;
-        server_name  localhost;
-                proxy_read_timeout 600;
+        server_name localhost;
+        proxy_read_timeout 600;
 
         location /cloud {
             proxy_pass  http://cm_app;

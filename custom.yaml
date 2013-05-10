@@ -3,10 +3,14 @@ system:
 python:
   - bx-python
   - rpy
-analysis:
-  - samtools
+bio_nextgen:
+  analysis:
+    - samtools
 cloudman:
   - nginx
   - proftpd
   - sge
   - novnc
+galaxy:
+  - galaxy_webapp
+  - galaxy_tools

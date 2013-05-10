@@ -10,7 +10,7 @@ packages:
   # - distributed
   - amazon
   # - python
-  # - r
+  - r
   # - ruby
   # - perl
   # - java
@@ -24,7 +24,7 @@ packages:
   # - bio_general
   # - bio_search
   # - bio_alignment
-  # - bio_nextgen
+  - bio_nextgen
   # - bio_sequencing
   # - bio_annotation
   # - bio_microarray
