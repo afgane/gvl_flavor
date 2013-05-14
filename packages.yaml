@@ -23,6 +23,10 @@ minimal:
   administration:
     - sudo
     - htop
+    - sysstat
+    - iotop
+    - iftop
+    - nmon
   editors:
     - vim
     # don't put in emacs, as it pulls in X
