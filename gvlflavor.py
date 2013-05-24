@@ -37,4 +37,12 @@ class GVLFlavor(Flavor):
               "v{0}/postgresql-{0}.tar.gz").format(version)
         _get_install(url, self.env, self._install_postgres_configure_make)
 
+    def _install_php(self):
+        """
+        Install Php and adapters for nginx and postgres
+        """
+        
+        self.env.safe_sudo('apt-get install php5 ???????')
+        
+
 env.flavor = GVLFlavor(env)
