@@ -17,6 +17,7 @@ packages:
   # # - erlang
   # # - haskell
   - databases
+  - php
   # # - math
   # - viz
   # # - web

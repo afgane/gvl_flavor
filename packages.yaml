@@ -302,6 +302,11 @@ databases:
   hdf:
     # - libhdf5-7
     # - libhdf5-dev
+php:
+  - php5-fpm
+  - php5-gd
+  - php5-odbc
+  - php5-pgsql
 math:
   - prover9
   - octave

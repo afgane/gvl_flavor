@@ -113,6 +113,8 @@ galaxy_install_r_packages = false
 #galaxy_indices_mount = /mnt/biodata
 #extra_nfs_exports = comma,separate,desired,paths
 
+# Path to the SCF installation
+scf_install = /var/www
 
 # -- Tool-specific configurations
 

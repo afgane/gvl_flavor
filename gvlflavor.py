@@ -42,7 +42,7 @@ class GVLFlavor(Flavor):
         Install Php and adapters for nginx and postgres
         """
         
-        self.env.safe_sudo('apt-get install php5 ???????')
+#        self.env.safe_sudo('apt-get install php5 ???????')
         
 
 env.flavor = GVLFlavor(env)
