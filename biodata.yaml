@@ -29,12 +29,14 @@ genomes:
   - dbkey: mm9
     name: Mouse (mm9)
     rnaseq: true
-  - dbkey: xenTro2
-    name: X tropicalis (frog)
+  - dbkey: araTha_tair9
+    name: Arabidopsis thaliana (TAIR9)
+  # - dbkey: xenTro2
+  #   name: X tropicalis (frog)
   - dbkey: sacCer2
     name: S cerevisiae (yeast)
-  - dbkey: WS210
-    name: C elegans (WS210)
+  # - dbkey: WS210
+  #   name: C elegans (WS210)
   # Build these
   # - dbkey: danRer6
   #   name: Zebrafish (Danio rerio)
