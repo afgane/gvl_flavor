@@ -26,10 +26,10 @@ class GVLFlavor(Flavor):
         self._install_postgres()
         self._install_php()
 
-    def _install_postgres_configure_make(self):
+    def _install_postgres_configure_make(self, env):
         run('./configure --prefix=/usr/lib/postgresql/8.4 --with-pgport=5840 --with-python')
         run('make')
-        self.env.safe_sudo('make install')
+        env.safe_sudo('make install')
 
     def _install_postgres(self):
         """
