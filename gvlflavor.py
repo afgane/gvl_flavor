@@ -81,7 +81,8 @@ class GVLFlavor(Flavor):
         
         run("sudo /etc/init.d/php5-fpm restart")
         run("drush cc all")
-        run("sudo killall nginx")
+        with settings(warn_only=True):
+            run("sudo killall nginx")
         run("sudo /opt/galaxy/sbin/nginx");
         with cd("%(DEST_DIR)s/gvl-scf" % vars) :
             run("drush site-install scf_vm --yes --account-name=admin --account-pass=%(PASSWORD)s --db-url=pgsql://%(USERNAME)s:%(PASSWORD)s@localhost/%(DBNAME)s --site-name=%(SITE_NAME)s" % vars)
