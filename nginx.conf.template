@@ -109,6 +109,7 @@ http {
 		location /gvl-scf {
 		    alias /home/ubuntu/www;
             index index.php;
+		  	rewrite ^ /gvl-scf/index.php;
 		
 			# This is cool because no php is touched for static content
 		    try_files $$uri @rewrite;
@@ -116,7 +117,7 @@ http {
 		        alias /home/ubuntu/www$$fastcgi_script_name;
 		        expires           1d;
 		    }
-			rewrite ^/(.*)$$ /gvl-scf/index.php?q=$$1;
+#			rewrite ^/(.*)$$ /gvl-scf/index.php?q=$$1;
 			 
 		    location ~ \.php$$ {
 		        alias /home/ubuntu/www;
@@ -126,7 +127,7 @@ http {
 		        #fastcgi_pass localhost:9000;
 		        fastcgi_index index.php;
 		        include fastcgi_params;
-		        fastcgi_read_timeout 600; 
+		        fastcgi_read_timeout 900; 
 		        fastcgi_param  SCRIPT_FILENAME  $$document_root$$fastcgi_script_name;
 		    
 		   }
@@ -136,7 +137,7 @@ http {
 		location @rewrite {
 		 # Some modules enforce no slash (/) at the end of the URL
 		 # Else this rewrite block wouldn't be needed (GlobalRedirect)
-		     root /home/ubuntu/www;
+		     #root /home/ubuntu/www;
 		     rewrite ^/(.*)$$ /gvl-scf/index.php?q=$$1;
 		}
 
