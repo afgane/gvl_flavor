@@ -83,6 +83,7 @@ class GVLFlavor(Flavor):
         run("drush cc all")
         with settings(warn_only=True):
             run("sudo killall nginx")
+            run("sudo mkdir -p /mnt/galaxy/upload_store")
         run("sudo /opt/galaxy/sbin/nginx");
         with cd("%(DEST_DIR)s/gvl-scf" % vars) :
             run("drush site-install scf_vm --yes --account-name=admin --account-pass=%(PASSWORD)s --db-url=pgsql://%(USERNAME)s:%(PASSWORD)s@localhost/%(DBNAME)s --site-name=%(SITE_NAME)s" % vars)
