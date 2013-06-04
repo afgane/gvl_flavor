@@ -64,7 +64,7 @@ class GVLFlavor(Flavor):
             run("sed -i 's/\[DATABASE\]/%(DBNAME)s/g'  gvl-scf/sites/default/settings.php" % vars)
             run("sed -i 's/\[USERNAME\]/%(USERNAME)s/g'  gvl-scf/sites/default/settings.php" % vars)
             run("sed -i 's/\[PASSWORD\]/%(PASSWORD)s/g'  gvl-scf/sites/default/settings.php" % vars)
-            run("sed -i 's/cgi\.fix_pathinfo=0/cgi\.fix_pathinfo=1/g'  /etc/php5/fpm/php.ini")
+            run("sudo sed -i 's/cgi\.fix_pathinfo=0/cgi\.fix_pathinfo=1/g'  /etc/php5/fpm/php.ini")
             
             run("chmod 770 gvl-scf/sites/default/settings.php")
             run("sudo chown ubuntu:galaxy gvl-scf/sites/default/settings.php")
