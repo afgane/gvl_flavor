@@ -23,7 +23,7 @@ class GVLFlavor(Flavor):
 
     def post_install(self):
         self.env.logger.info("Starting post-install")
-#        self._install_postgres()
+        self._install_postgres()
         self._install_php()
 
     def _install_postgres_configure_make(self, env):
