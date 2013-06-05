@@ -9,6 +9,7 @@ http {
     default_type  application/octet-stream;
     sendfile        on;
     keepalive_timeout  65;
+    index   index.html index.php index.htm;
 
     gzip  on;
     gzip_http_version 1.1;
@@ -103,6 +104,43 @@ http {
             internal;
             alias /;
         }
+
+
+		location /gvl-scf {
+		    alias /home/ubuntu/www;
+            index index.php;
+		  	rewrite ^ /gvl-scf/index.php;
+		
+			# This is cool because no php is touched for static content
+		    try_files $$uri @rewrite;
+		    location ~* \.(jpg|jpeg|gif|png|bmp|ico|pdf|flv|swf|exe|html|htm|txt|css|js) {
+		        alias /home/ubuntu/www$$fastcgi_script_name;
+		        expires           1d;
+		    }
+#			rewrite ^/(.*)$$ /gvl-scf/index.php?q=$$1;
+			 
+		    location ~ \.php$$ {
+		        alias /home/ubuntu/www;
+		        try_files $$uri =404;
+		        fastcgi_split_path_info ^(.+\.php)(/.+)$$;
+		        fastcgi_pass unix:/var/run/php5-fpm.sock;
+		        #fastcgi_pass localhost:9000;
+		        fastcgi_index index.php;
+		        include fastcgi_params;
+		        fastcgi_read_timeout 900; 
+		        fastcgi_param  SCRIPT_FILENAME  $$document_root$$fastcgi_script_name;
+		    
+		   }
+		
+		}
+		
+		location @rewrite {
+		 # Some modules enforce no slash (/) at the end of the URL
+		 # Else this rewrite block wouldn't be needed (GlobalRedirect)
+		     #root /home/ubuntu/www;
+		     rewrite ^/(.*)$$ /gvl-scf/index.php?q=$$1;
+		}
+
 
         location /_upload {
             upload_store /mnt/galaxy/upload_store;

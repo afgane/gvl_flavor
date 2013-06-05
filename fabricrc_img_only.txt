@@ -122,3 +122,10 @@ nginx_conf_template_path = contrib/flavor/gvl/nginx.conf.template
 
 # Picard home
 picard_home = /usr/share/java/picard
+
+# Science Collaboration Framework
+scf_dbname = scfdb 
+scf_username = scfuser
+scf_password = scfgv7 
+scf_dest_dir = www
+scf_site_name = GVL

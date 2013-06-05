@@ -17,6 +17,8 @@ packages:
   # # - erlang
   # # - haskell
   - databases
+  - php
+  - drupal
   # # - math
   # - viz
   # # - web
@@ -31,7 +33,7 @@ packages:
   # - bio_visualization
   # - bio_utils
   # - phylogeny
-  - galaxy
+ # - galaxy
   - cloudman
 libraries:
   # - haskell-libs
