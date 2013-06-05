@@ -11,7 +11,7 @@ flavor_dir = gvl.gvlflavor
 # -- Details about the operating system
 ## Ubuntu
 distribution = ubuntu
-dist_name = quantal
+dist_name = precise
 ## Centos
 #distribution = centos
 ## Debian
@@ -89,12 +89,19 @@ galaxy_database_path = /mnt/galaxy/db
 # Location of Galaxy's .loc files
 #galaxy_loc_files = /mnt/galaxy/galaxy-app/tool-data/
 
+# Location of files required by Galaxy Trackster
+# This path needs to match what will be set in Galaxy's universe_wsgi.ini
+#galaxy_len_files = /mnt/galaxy/configuration_data/len
+
 # Galaxy requires Java tools to have their jar files places in a specific
 # directory, so specify it here.
 galaxy_jars_dir = /mnt/galaxy/galaxy-app/tool-data/shared/jars
 
 # If ``True``, install a set of tools considered as Galaxy dependencies
 galaxy_install_dependencies = True
+
+# Load Galaxy's default env.sh files so they are available on the command line
+autoload_galaxy_tools = True
 
 # Specify a custom location to a YAML file containing a list of tools to
 # install as Galaxy dependencies
@@ -126,8 +133,8 @@ nginx_conf_template_path = contrib/flavor/gvl/nginx.conf.template
 picard_home = /usr/share/java/picard
 
 # Science Collaboration Framework
-scf_dbname = scfdb 
+scf_dbname = scfdb
 scf_username = scfuser
-scf_password = scfgv7 
+scf_password = scfgv7
 scf_dest_dir = www
 scf_site_name = GVL
