@@ -90,5 +90,6 @@ class GVLFlavor(Flavor):
         run("rm ~/.pgpass")
         with cd(vars['DEST_DIR']) :
             run("rm fix-permissions.sh")
+        run("sudo chown -R ubuntu:galaxy %(DEST_DIR)s " % vars)
 
 env.flavor = GVLFlavor(env)
