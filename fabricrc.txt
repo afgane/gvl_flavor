@@ -122,6 +122,9 @@ scf_install = /var/www
 nginx_conf_template_path = contrib/flavor/gvl/nginx.conf.template
 #nginx_conf_path = path/to/custom/nginx.conf
 
+nginx_upload_store_path = /mnt/galaxy/upload_store
+
+
 # Picard home
 picard_home = /usr/share/java/picard
 

@@ -307,6 +307,8 @@ php:
   - php5-gd
   - php5-odbc
   - php5-pgsql
+ftp:
+  - vsftpd
 drupal:
   - drush
 math:
