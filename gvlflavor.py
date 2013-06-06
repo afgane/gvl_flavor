@@ -52,7 +52,7 @@ class GVLFlavor(Flavor):
         run("sudo sed -i 's/www-data/galaxy/g' /etc/php5/fpm/pool.d/www.conf")
         run("sudo sed -i 's/local   all             postgres                                peer/local   all             postgres                                trust/g' /etc/postgresql/9.1/main/pg_hba.conf")
         
-        if scf_standalone in env:
+        if "scf_standalone" in env:
             env.nginx_upload_store_path = env.nginx_upload_store_path_SCF_standalone
         run("mkdir -p %(DEST_DIR)s " % vars)
         with cd(vars['DEST_DIR']):
