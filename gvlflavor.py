@@ -51,7 +51,9 @@ class GVLFlavor(Flavor):
         run("sudo sed -i 's/;request_terminate_timeout = 0$/request_terminate_timeout = 600/g' /etc/php5/fpm/pool.d/www.conf")
         run("sudo sed -i 's/www-data/galaxy/g' /etc/php5/fpm/pool.d/www.conf")
         run("sudo sed -i 's/local   all             postgres                                peer/local   all             postgres                                trust/g' /etc/postgresql/9.1/main/pg_hba.conf")
-
+        
+        if scf_standalone in env:
+            env.nginx_upload_store_path = env.nginx_upload_store_path_SCF_standalone
         run("mkdir -p %(DEST_DIR)s " % vars)
         with cd(vars['DEST_DIR']):
             run("sudo rm -rf gvl-scf")
@@ -83,7 +85,7 @@ class GVLFlavor(Flavor):
         run("drush cc all")
         with settings(warn_only=True):
             run("sudo killall nginx")
-            run("sudo mkdir -p /mnt/galaxy/upload_store")
+            run("sudo mkdir -p %(nginx_upload_store_path)s" % env)
         run("sudo /opt/galaxy/sbin/nginx")
         with cd("%(DEST_DIR)s/gvl-scf" % vars):
             run("drush site-install scf_vm --yes --account-name=admin --account-pass=%(PASSWORD)s --db-url=pgsql://%(USERNAME)s:%(PASSWORD)s@localhost/%(DBNAME)s --site-name=%(SITE_NAME)s" % vars)
