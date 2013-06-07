@@ -2,6 +2,9 @@
 from fabric.api import run, cd, settings
 from cloudbio.flavor import Flavor
 from cloudbio.custom.shared import _get_install
+from fabric.api import *
+from fabric.contrib.files import *
+
 
 class GVLFlavor(Flavor):
     def __init__(self, env):
