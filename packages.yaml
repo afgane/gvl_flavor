@@ -214,7 +214,7 @@ amazon:
   - euca2ools
   - ec2-ami-tools
   - ec2-api-tools
-  - python-vm-builder-ec2
+  # - python-vm-builder-ec2
 python:
   meta:
     - python
@@ -235,7 +235,7 @@ r:
   - r-base
   - r-base-core
   - r-base-dev
-  - r-base-html
+  # - r-base-html
 perl:
   - perl
   - libperl-dev
