@@ -1,9 +1,7 @@
-
-from fabric.api import run, cd, settings
+import os
+from fabric.api import run, cd, settings, env, put
 from cloudbio.flavor import Flavor
-from cloudbio.custom.shared import _get_install
-# from fabric.api import *
-# from fabric.contrib.files import *
+from cloudbio.custom.shared import _get_install, _add_to_profiles
 
 
 class GVLFlavor(Flavor):
@@ -22,8 +20,9 @@ class GVLFlavor(Flavor):
 
     def post_install(self):
         self.env.logger.info("Starting post-install")
-        self._install_postgres()
+        # self._install_postgres()
         self._install_php()
+        self._setup_env()
 
     def _install_postgres_configure_make(self, env):
         run('./configure --prefix=/usr/lib/postgresql/8.4 --with-pgport=5840 --with-python')
@@ -91,5 +90,33 @@ class GVLFlavor(Flavor):
         with cd(vars['DEST_DIR']):
             run("rm fix-permissions.sh")
         run("sudo chown -R ubuntu:galaxy %(DEST_DIR)s " % vars)
+
+    def _setup_env(self):
+        """
+        Setup a custom user-level env
+        """
+        # Add commond directories to PATH
+        path_additions = ("export PATH=/usr/lib/postgresql/9.1/bin:" +
+            "/usr/nginx/sbin:/mnt/galaxy/tools/bin:$PATH")
+        env.logger.debug("Amending the PATH with {0}".path(path_additions))
+        _add_to_profiles(path_additions, ['/etc/bash.bashrc'])
+        # Seed the history with frequently used commands
+        env.logger.debug("Setting bash history")
+        local = os.path.join(env.config_dir, os.pardir, "installed_files",
+            "bash_history")
+        remote = os.path.join('/home', 'ubuntu', '.bash_history')
+        put(local, remote, mode=0660, use_sudo=True)
+        # Install ipython profiles
+        users = ['ubuntu', 'galaxy']
+        for user in users:
+            env.logger.debug("Setting installing ipython profile for user {0}"
+                .format(user))
+            env.safe_sudo("su - {0} -c 'ipython profile create'".format(user))
+            local = os.path.join(env.config_dir, os.pardir, "installed_files",
+                "ipython_config.py")
+            remote = os.path.join('/home', user, '.ipython', 'profile_default',
+                "ipython_config.py")
+            put(local, remote, mode=0644, use_sudo=True)
+            env.safe_sudo("chown {0}:{0} {1}".format(user, remote))
 
 env.flavor = GVLFlavor(env)
