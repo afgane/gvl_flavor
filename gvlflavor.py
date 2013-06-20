@@ -80,9 +80,8 @@ class GVLFlavor(Flavor):
                 % vars)
             run("createdb -U postgres --encoding=UTF8 --owner=%(USERNAME)s %(DBNAME)s" % vars)
         #echo "Created new database: $DBNAME"
-
             run("sudo /etc/init.d/php5-fpm restart")
-            run("drush cc all")
+
         with settings(warn_only=True):
             run("sudo killall nginx")
             run("sudo mkdir -p %(nginx_upload_store_path)s" % env)
@@ -91,6 +90,8 @@ class GVLFlavor(Flavor):
             run("drush site-install scf_vm --yes --account-name=admin --account-pass=%(PASSWORD)s --db-url=pgsql://%(USERNAME)s:%(PASSWORD)s@localhost/%(DBNAME)s --site-name=%(SITE_NAME)s" % vars)
         run("rm ~/.pgpass")
         with cd(vars['DEST_DIR']):
+            run("sudo /etc/init.d/php5-fpm restart")
+            run("drush cc all")
             run("rm fix-permissions.sh")
         run("sudo chown -R ubuntu:galaxy %(DEST_DIR)s " % vars)
 
