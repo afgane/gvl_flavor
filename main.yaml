@@ -18,6 +18,7 @@ packages:
   # # - haskell
   - databases
   - php
+  - ftp
   - drupal
   # # - math
   # - viz

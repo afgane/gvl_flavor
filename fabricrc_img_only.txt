@@ -120,6 +120,13 @@ galaxy_install_r_packages = True
 nginx_conf_template_path = contrib/flavor/gvl/nginx.conf.template
 #nginx_conf_path = path/to/custom/nginx.conf
 
+nginx_upload_store_path = /mnt/galaxy/upload_store
+nginx_upload_store_path_SCF_standalone = /home/ubuntu/upload_store
+
+# SCF
+# uncomment to create a standalone SCF image without galaxy
+#scf_standalone = true
+
 # Picard home
 picard_home = /usr/share/java/picard
 

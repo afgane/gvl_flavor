@@ -3,6 +3,9 @@ from fabric.api import run, cd, settings, env, put
 from cloudbio.flavor import Flavor
 from cloudbio.custom.shared import _get_install, _add_to_profiles
 
+from cloudbio.flavor import Flavor
+from cloudbio.custom.shared import _get_install
+
 
 class GVLFlavor(Flavor):
     def __init__(self, env):
@@ -50,7 +53,8 @@ class GVLFlavor(Flavor):
         run("sudo sed -i 's/;request_terminate_timeout = 0$/request_terminate_timeout = 600/g' /etc/php5/fpm/pool.d/www.conf")
         run("sudo sed -i 's/www-data/galaxy/g' /etc/php5/fpm/pool.d/www.conf")
         run("sudo sed -i 's/local   all             postgres                                peer/local   all             postgres                                trust/g' /etc/postgresql/9.1/main/pg_hba.conf")
-
+        if env.has_key("scf_standalone"):
+            env.nginx_upload_store_path = env.nginx_upload_store_path_SCF_standalone
         run("mkdir -p %(DEST_DIR)s " % vars)
         with cd(vars['DEST_DIR']):
             run("sudo rm -rf gvl-scf")
@@ -77,17 +81,18 @@ class GVLFlavor(Flavor):
                 % vars)
             run("createdb -U postgres --encoding=UTF8 --owner=%(USERNAME)s %(DBNAME)s" % vars)
         #echo "Created new database: $DBNAME"
+            run("sudo /etc/init.d/php5-fpm restart")
 
-        run("sudo /etc/init.d/php5-fpm restart")
-        run("drush cc all")
         with settings(warn_only=True):
             run("sudo killall nginx")
-            run("sudo mkdir -p /mnt/galaxy/upload_store")
+            run("sudo mkdir -p %(nginx_upload_store_path)s" % env)
         run("sudo /opt/galaxy/sbin/nginx")
         with cd("%(DEST_DIR)s/gvl-scf" % vars):
             run("drush site-install scf_vm --yes --account-name=admin --account-pass=%(PASSWORD)s --db-url=pgsql://%(USERNAME)s:%(PASSWORD)s@localhost/%(DBNAME)s --site-name=%(SITE_NAME)s" % vars)
         run("rm ~/.pgpass")
         with cd(vars['DEST_DIR']):
+            run("sudo /etc/init.d/php5-fpm restart")
+            run("drush cc all")
             run("rm fix-permissions.sh")
         run("sudo chown -R ubuntu:galaxy %(DEST_DIR)s " % vars)
 
