@@ -81,8 +81,8 @@ class GVLFlavor(Flavor):
             run("createdb -U postgres --encoding=UTF8 --owner=%(USERNAME)s %(DBNAME)s" % vars)
         #echo "Created new database: $DBNAME"
 
-        run("sudo /etc/init.d/php5-fpm restart")
-        run("drush cc all")
+            run("sudo /etc/init.d/php5-fpm restart")
+            run("drush cc all")
         with settings(warn_only=True):
             run("sudo killall nginx")
             run("sudo mkdir -p %(nginx_upload_store_path)s" % env)
