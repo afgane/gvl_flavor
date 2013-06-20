@@ -4,6 +4,8 @@ python:
   - bx-python
   - rpy
 bio_nextgen:
+  alignment:
+    - bwa
   analysis:
     - samtools
 cloudman:
@@ -11,6 +13,6 @@ cloudman:
   - proftpd
   - sge
   - novnc
-galaxy:
-  - galaxy_webapp
-  - galaxy_tools
+# galaxy:
+  # - galaxy_webapp
+  # - galaxy_tools
