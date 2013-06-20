@@ -92,10 +92,10 @@ class GVLFlavor(Flavor):
         run("sudo /opt/galaxy/sbin/nginx")
         with cd("%(DEST_DIR)s/gvl-scf" % vars):
             run("drush site-install scf_vm --yes --account-name=admin --account-pass=%(PASSWORD)s --db-url=pgsql://%(USERNAME)s:%(PASSWORD)s@localhost/%(DBNAME)s --site-name=%(SITE_NAME)s" % vars)
+            run("drush cc all")
         run("rm ~/.pgpass")
         with cd(vars['DEST_DIR']):
             run("sudo /etc/init.d/php5-fpm restart")
-            run("drush cc all")
             run("rm fix-permissions.sh")
         run("sudo chown -R ubuntu:galaxy %(DEST_DIR)s " % vars)
 
@@ -106,7 +106,7 @@ class GVLFlavor(Flavor):
         # Add commond directories to PATH
         path_additions = ("export PATH=/usr/lib/postgresql/9.1/bin:" +
             "/usr/nginx/sbin:/mnt/galaxy/tools/bin:$PATH")
-        env.logger.debug("Amending the PATH with {0}".path(path_additions))
+        env.logger.debug("Amending the PATH with {0}".format(path_additions))
         _add_to_profiles(path_additions, ['/etc/bash.bashrc'])
         # Seed the history with frequently used commands
         env.logger.debug("Setting bash history")
