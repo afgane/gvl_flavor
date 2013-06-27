@@ -34,7 +34,7 @@ packages:
   # - bio_visualization
   # - bio_utils
   # - phylogeny
- # - galaxy
+  # - galaxy
   - cloudman
 libraries:
   # - haskell-libs
