@@ -27,7 +27,8 @@ class GVLFlavor(Flavor):
     def post_install(self):
         self.env.logger.info("Starting post-install")
         # self._install_postgres()
-        self._install_php()
+        # comment out SCF GVL for the moment
+        #  self._install_php()
         self._setup_env()
 
     def _install_postgres_configure_make(self, env):
@@ -62,6 +63,8 @@ class GVLFlavor(Flavor):
         with cd(vars['DEST_DIR']):
             run("sudo rm -rf gvl-scf")
             run("git clone git://github.com/Traksewt/gvl-scf.git")
+            with cd('gvl-scf/sites/all/modules/custom'):
+                run("git clone git://github.com/Traksewt/journalstream.git")
             run("wget https://s3-ap-southeast-2.amazonaws.com/gvl-scf/fix-permissions.sh")
             run("chmod +x fix-permissions.sh")
             run("sudo ./fix-permissions.sh --drupal_path=gvl-scf --drupal_user=ubuntu")
@@ -69,6 +72,10 @@ class GVLFlavor(Flavor):
             run("sed -i 's/\[DATABASE\]/%(DBNAME)s/g'  gvl-scf/sites/default/settings.php" % vars)
             run("sed -i 's/\[USERNAME\]/%(USERNAME)s/g'  gvl-scf/sites/default/settings.php" % vars)
             run("sed -i 's/\[PASSWORD\]/%(PASSWORD)s/g'  gvl-scf/sites/default/settings.php" % vars)
+#            run("sudo sed -i 's/\#write_enable=YES/write_enable=YES/g'  /etc/vsftpd.conf" )
+            
+            
+            
             run("sudo sed -i 's/cgi\.fix_pathinfo=0/cgi\.fix_pathinfo=1/g'  /etc/php5/fpm/php.ini")
 
             run("chmod 770 gvl-scf/sites/default/settings.php")
