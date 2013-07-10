@@ -27,7 +27,7 @@ class GVLFlavor(Flavor):
     def post_install(self):
         self.env.logger.info("Starting post-install")
         # self._install_postgres()
-        # comment out GVL for the moment
+        # comment out SCF GVL for the moment
         #  self._install_php()
         self._setup_env()
 
