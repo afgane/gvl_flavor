@@ -11,6 +11,7 @@ packages:
   - amazon
   # - python
   - r
+  - modules
   # - ruby
   # - perl
   # - java

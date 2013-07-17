@@ -456,6 +456,9 @@ phylogeny:
     - bio-linux-treeview
   needs_64bit:
     - bio-linux-fasttree
+modules:  # currently installing environment modules from source; these are dependencies
+  - tcl
+  - tcl-dev
 ## Package lists imported from mi-deployment.
 cloudman:
   all:

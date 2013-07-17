@@ -28,6 +28,7 @@ class GVLFlavor(Flavor):
         self.env.logger.info("Starting post-install")
         # self._install_postgres()
         self._install_php()
+        self._install_modules()
         self._setup_env()
 
     def _install_postgres_configure_make(self, env):
@@ -126,5 +127,33 @@ class GVLFlavor(Flavor):
                 "ipython_config.py")
             put(local, remote, mode=0644, use_sudo=True)
             env.safe_sudo("chown {0}:{0} {1}".format(user, remote))
+
+    def _install_modules_configure_make(self, env):
+        """
+        Differences from standard _configure_make():
+            - TODO: ./configure with destination modulefile directory on shared filesystem
+            - add modules to profile for all users
+        """
+        # currently putting module files in directory structure under env.system_install
+        # it would be better to store them on a filesystem shared with worker nodes; this is harder
+        env.safe_run("export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:%s/lib/pkgconfig && " \
+                 "./configure --prefix=%s " %
+                 (env.system_install, env.system_install))
+        run('make')
+        env.safe_sudo('make install')
+        env.safe_sudo("cp etc/global/profile.modules /etc/profile.d/modules.sh")
+        env.safe_sudo("ln -s {0} {1}".format(os.path.join(env.system_install, 'Modules', env.environment_modules_version), os.path.join(env.system_install, 'Modules', 'default')))
+
+    def _install_modules(self):
+        """
+        Install environment-modules from source.
+        NB if we move to Ubuntu quantal or later it would probably be easier to use apt-get.
+        """
+        env.environment_modules_version = "3.2.10"
+        filename = "modules-{0}.tar.gz".format(env.environment_modules_version)
+        url = ("http://sourceforge.net/projects/modules/files/Modules/"\
+               "modules-{0}/{1}/download").format(env.environment_modules_version, filename)
+        _get_install(url, self.env, self._install_modules_configure_make, tar_file_name=filename)
+        
 
 env.flavor = GVLFlavor(env)
