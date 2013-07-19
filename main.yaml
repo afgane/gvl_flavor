@@ -35,6 +35,7 @@ packages:
   # - bio_utils
   # - phylogeny
   # - galaxy
+  # - galaxy_tools
   - cloudman
 libraries:
   # - haskell-libs

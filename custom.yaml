@@ -14,5 +14,6 @@ cloudman:
   - sge
   - novnc
 # galaxy:
-  # - galaxy_webapp
-  # - galaxy_tools
+#   - galaxy_webapp
+# galaxy_tools:
+#   - cbl_galaxy_tools
