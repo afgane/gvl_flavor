@@ -40,6 +40,7 @@ pypi:
   - biopython
   - bcbio-nextgen
   - ruffus
+  - git+git://github.com/bjpop/rubra.git #rubra from github source
   #- cogent
   - DendroPy
   - HTSeq
