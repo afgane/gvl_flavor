@@ -6,6 +6,8 @@ python:
 bio_nextgen:
   alignment:
     - bwa
+  utilitites:
+    - bedtools
   analysis:
     - samtools
 cloudman:
