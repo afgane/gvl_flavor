@@ -41,6 +41,6 @@ packages:
 libraries:
   # - haskell-libs
   # - perl-libs
-  # - python-libs
+  - python-libs
   - r-libs
   # - ruby-libs
