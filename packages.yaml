@@ -504,6 +504,7 @@ cloudman:
     - mime-support
     # Required to get HTCondor
     - condor
+    - glusterfs-client
 galaxy:
   all:
     - postgresql
