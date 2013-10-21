@@ -162,6 +162,7 @@ programming:
     - libpango1.0-0
     - libpango1.0-dev
     - libx11-dev
+    - libfreetype6-dev
   packaging:
     - build-essential
     - devscripts
