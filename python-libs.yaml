@@ -38,15 +38,16 @@ pypi:
   # - Twisted
   # science
   - biopython
+  - cython  # reguired by pybedtools
   # - bcbio-nextgen
   - ruffus
   - git+git://github.com/bjpop/rubra.git #rubra from github source
   #- cogent
-  - DendroPy
+  # - DendroPy
   - HTSeq
   - matplotlib
   - networkx
-  - pandas
+  # - pandas
   - pybedtools
   - pygr
   - pysam
@@ -55,8 +56,8 @@ pypi:
   # - rpy2-bioconductor-extensions
   # - scikit-learn
   # - statsmodels
-  - ramp
-  - scipy
+  # - ramp
+  # - scipy
   # databases
   # - CouchDB
   # - h5py
