@@ -4,8 +4,6 @@ python:
   - bx-python
   - rpy
 bio_nextgen:
-  alignment:
-    - bwa
   utilitites:
     - bedtools
   analysis:
