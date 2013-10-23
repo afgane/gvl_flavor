@@ -29,7 +29,7 @@ edition = cloudbiolinux
 is_ec2_image = false
 
 # Global installation directory for packages and standard programs
-system_install = /usr
+system_install = /mnt/galaxy/tools
 
 # Local install directory for versioned software that will not
 # be included in the path by default
