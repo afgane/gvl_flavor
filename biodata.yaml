@@ -26,6 +26,10 @@ genomes:
     dbsnp: true
   - dbkey: dm3
     name: D melangogaster (dm3)
+  - dbkey: mm10
+    name: Mouse (mm10)
+    dbsnp: true
+    rnaseq: true
   - dbkey: mm9
     name: Mouse (mm9)
     rnaseq: true
