@@ -60,7 +60,7 @@ data_files = /mnt/galaxyIndices
 galaxy_home = /mnt/galaxy/galaxy-app
 
 # URL for the Galaxy application source code repository
-galaxy_repository = https://bitbucket.org/galaxy/galaxy-dist/
+galaxy_repository = https://bitbucket.org/galaxy/galaxy-dist#stable
 
 # If ``True``, Galaxy repository will not be custom-configured after being cloned
 # The customization details are primarily targeted at a cloud deployment; for
@@ -70,7 +70,7 @@ galaxy_repository = https://bitbucket.org/galaxy/galaxy-dist/
 # A path to the binaries for interacting with PostgreSQL
 #postgres_bin_dir = /usr/lib/postgresql/9.1/bin
 #postrges_user = postgres
-postgres_port = 5840
+postgres_port = 5910
 
 # If ``True``, setup and initialize Postgres database for use by Galaxy
 # according to the following options
@@ -95,7 +95,7 @@ galaxy_database_path = /mnt/galaxy/db
 
 # Galaxy requires Java tools to have their jar files places in a specific
 # directory, so specify it here.
-galaxy_jars_dir = /mnt/galaxy/galaxy-app/tool-data/shared/jars
+galaxy_jars_dir = /mnt/galaxy/tools/jars
 
 # If ``True``, install a set of tools considered as Galaxy dependencies
 galaxy_install_dependencies = True
