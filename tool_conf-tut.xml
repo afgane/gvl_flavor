@@ -148,11 +148,6 @@
 
     <label id="fastx_toolkit" text="FASTX-Toolkit for FASTQ data" />
   </section>
-  <section name="NGS: Assembly" id="ngs_assembly">
-    <label text="Velvet" id="velvet"/>
-    <tool file="sr_assembly/velvetg.xml" />
-    <tool file="sr_assembly/velveth.xml" />
-  </section>
   <section id="indel_analysis" name="NGS: Indel Analysis">
     <tool file="indels/sam_indel_filter.xml" />
     <tool file="indels/indel_table.xml" />
