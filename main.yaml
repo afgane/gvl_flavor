@@ -22,7 +22,7 @@ packages:
   - ftp
   - drupal
   # # - math
-  # - viz
+  - viz
   # # - web
   - boinc
   # - bio_general
