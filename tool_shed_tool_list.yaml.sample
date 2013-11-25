@@ -1,0 +1,11 @@
+api_key: <Admin user API key from galaxy_instance>
+galaxy_instance: <Galaxy instance IP>
+tools:
+- name: synapse_interface
+  owner: kellrott
+  tool_panel_section_id: peak_calling
+  tool_shed_url: http://testtoolshed.g2.bx.psu.edu
+- name: venn_list
+  owner: peterjc
+  tool_panel_section_id: peak_calling
+  tool_shed_url: http://testtoolshed.g2.bx.psu.edu
