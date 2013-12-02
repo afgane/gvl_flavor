@@ -163,6 +163,8 @@ programming:
     - libpango1.0-dev
     - libx11-dev
     - libfreetype6-dev
+    - libcgi-session-perl
+    - libclass-base-perl
   packaging:
     - build-essential
     - devscripts
