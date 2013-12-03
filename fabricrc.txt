@@ -30,6 +30,8 @@ is_ec2_image = false
 
 # Global installation directory for packages and standard programs
 system_install = /mnt/galaxy/tools
+# Used below path when installing image-level tools
+# system_install = /usr/local
 
 # Local install directory for versioned software that will not
 # be included in the path by default
