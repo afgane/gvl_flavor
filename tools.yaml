@@ -3,6 +3,7 @@ applications:
   ## Coming from bio_nextgen.py
   ucsc_tools: "default"
   bowtie: "0.12.9"  # Required by Tophat
+  bowtie2: "2.1.0"
   # samtools: "0.1.16"  # Needs to be installed on the image
   abyss: "1.3.4"
   bfast: "0.7.0a"
@@ -35,7 +36,12 @@ applications:
   gatk: "1.4-9-g1f1233b"
   # maq: "0.7.1" # Compile error
   megablast: "2.2.22"
-  # blast: "2.2.25+"
+      bin_dirs: # megalblast requires blastn so make sure to include it in it's env.sh
+        - .
+        - ../../blast+/2.2.26+/bin
+  blast:
+    - version: "2.2.26+"
+      requirement_name: "blast+"
   sputnik: "r1"
   taxonomy: "r2"
   add_scores: "r1"
