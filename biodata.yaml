@@ -51,6 +51,8 @@ genomes:
 # Available choices are in GENOMES_INDEXES_SUPPORTED in data_fabfile.py
 genome_indexes:
   - bowtie
+  # For the time being, bowtie2 has only mm10, hg19 & GRCh37 genomes
+  # - bowtie2
   - bwa
   - novoalign
   - ucsc
