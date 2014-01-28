@@ -508,6 +508,8 @@ cloudman:
     # Required to get HTCondor
     - condor
     - glusterfs-client
+    # Add some security against brute force ssh attacks
+    - fail2ban
 galaxy:
   all:
     - postgresql
