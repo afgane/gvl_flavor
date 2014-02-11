@@ -1,5 +1,5 @@
-api_key: <Admin user API key from galaxy_instance>
-galaxy_instance: <Galaxy instance IP>
+api_key: d055c8b15e1badc10475ad75f2500bd9
+galaxy_instance: 115.146.85.128
 tools:
 - name: prop_venn
   owner: idot
@@ -125,15 +125,39 @@ tools:
   owner: devteam
   tool_panel_section_id: ngs:_mapping
   tool_shed_url: http://toolshed.g2.bx.psu.edu
+- name: bowtie2
+  owner: devteam
+  tool_panel_section_id: ngs:_mapping
+  tool_shed_url: http://toolshed.g2.bx.psu.edu
 - name: freebayes
   owner: devteam
   tool_panel_section_id: ngs:_variant_detection
   tool_shed_url: http://toolshed.g2.bx.psu.edu
 - name: ensembl_vep
   owner: alonie
-  tool_panel_section_id: ensembl
+  tool_panel_section_id: ngs_annotation
   tool_shed_url: http://toolshed.g2.bx.psu.edu
 - name: bedtools
   owner: aaronquinlan
   tool_panel_section_id: bed_tools
+  tool_shed_url: http://toolshed.g2.bx.psu.edu
+- name: snpeff
+  owner: iuc
+  tool_panel_section_id: ngs_annotation
+  tool_shed_url: http://toolshed.g2.bx.psu.edu
+- name: truststore_import
+  owner: cathywise
+  tool_panel_section_id: getext
+  tool_shed_url: http://testtoolshed.g2.bx.psu.edu
+- name: all_vcftools
+  owner: devteam
+  tool_panel_section_id: ngs_vcf_tools
+  tool_shed_url: http://toolshed.g2.bx.psu.edu
+- name: gatk2
+  owner: iuc
+  tool_panel_section_id: gatk2
+  tool_shed_url: http://toolshed.g2.bx.psu.edu
+- name: tophat2
+  owner: devteam
+  tool_panel_section_id: gs-rna-tools
   tool_shed_url: http://toolshed.g2.bx.psu.edu
