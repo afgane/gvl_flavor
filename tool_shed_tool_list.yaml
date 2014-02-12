@@ -161,3 +161,7 @@ tools:
   owner: devteam
   tool_panel_section_id: gs-rna-tools
   tool_shed_url: http://toolshed.g2.bx.psu.edu
+- name: picard
+  owner: devteam
+  tool_panel_section_id: ngs_picard
+  tool_shed_url: http://toolshed.g2.bx.psu.edu
