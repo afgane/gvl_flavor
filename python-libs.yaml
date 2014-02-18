@@ -45,19 +45,21 @@ pypi:
   #- cogent
   # - DendroPy
   - HTSeq
+  - jinja2
   - matplotlib
   - networkx
-  # - pandas
+  - pandas
+  - patsy
   - pybedtools
   - pygr
   - pysam
-  - PyVCF
+  # - PyVCF
   - rpy2
   # - rpy2-bioconductor-extensions
   # - scikit-learn
-  # - statsmodels
+  - statsmodels
   # - ramp
-  # - scipy
+  - scipy
   # databases
   # - CouchDB
   # - h5py
@@ -67,8 +69,8 @@ pypi:
   - psycopg2
   - SQLAlchemy
   # visualization
-  - gnuplot-py
-  - PIL
+  # - gnuplot-py
+  # - PIL
   - pydot
   # - pygooglechart
   - reportlab
