@@ -131,6 +131,7 @@ bioc:
  - cummeRbund
  - DEGseq
  - DESeq
+ - DESeq2
  - DEXSeq
  - DiffBind
  - DNAcopy
