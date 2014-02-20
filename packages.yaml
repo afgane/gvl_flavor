@@ -49,6 +49,7 @@ minimal:
     # Required by cloud-init on Ubuntu 12.04
     - software-properties-common
     - python-prettytable
+    - libpam0g-dev
   util:
     - axel
     - rsync
