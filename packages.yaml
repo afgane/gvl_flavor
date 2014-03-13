@@ -86,8 +86,8 @@ desktop:
   ubuntu_lucid:
     - rubygems
 desktop-cloud:
-  # some special purpose VMs, such as BOINC, only require a minimal desktop
-  - lxde
+  - ubuntu-desktop
+  - xfce4
   - vnc4server
 programming:
   editors:

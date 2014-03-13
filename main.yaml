@@ -17,6 +17,7 @@ packages:
   # - java
   # # - erlang
   # # - haskell
+  - desktop-cloud
   - databases
   - php
   - ftp
