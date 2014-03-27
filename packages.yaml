@@ -86,9 +86,11 @@ desktop:
   ubuntu_lucid:
     - rubygems
 desktop-cloud:
-  - ubuntu-desktop
+  # - ubuntu-desktop
   - xfce4
+  - jwm
   - vnc4server
+  - firefox
 programming:
   editors:
     - emacs
