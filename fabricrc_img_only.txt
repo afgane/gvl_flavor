@@ -116,10 +116,18 @@ galaxy_install_r_packages = True
 
 # -- Tool-specific configurations
 
-# A location of a custom nginx.conf or a comparable template, respectively.
+## Nginx
+# Whether to install nginx from a package (see _install_nginx_package in
+# cloudman/__init__.py module).
+use_nginx_package = true
+# Where nginx.conf needs to be stored on the remote system. Note that this
+# applies only if nginx is installed from a package and the value here must
+# match the location of that file set when the package was built (see
+# https://github.com/afgane/gvl_flavor/tree/master/playbook)
+nginx_remote_conf_path = /usr/nginx/conf/nginx.conf
+# A location of a custom nginx.conf template (can be relative to the root CBL dir)
 nginx_conf_template_path = contrib/flavor/gvl/nginx.conf.template
-#nginx_conf_path = path/to/custom/nginx.conf
-
+# nginx-specific config options
 nginx_upload_store_path = /mnt/galaxy/upload_store
 nginx_upload_store_path_SCF_standalone = /home/ubuntu/upload_store
 
@@ -136,3 +144,17 @@ scf_username = scfuser
 scf_password = scfgv7
 scf_dest_dir = www
 scf_site_name = GVL
+
+# -- novnc configuration options
+# Configure novnc along with CloudMan
+configure_novnc = True
+# Where to install novnc
+novnc_install_dir = /opt/novnc
+# Password used by novnc to connect to vncserver.
+vnc_password = change_this_before_running_the_build
+# Set vnc_user if different than env.user
+vnc_user=ubuntu
+vnc_display=1
+vnc_depth=16
+vnc_geometry=1024x768
+
