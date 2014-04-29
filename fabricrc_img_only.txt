@@ -158,3 +158,6 @@ vnc_display=1
 vnc_depth=16
 vnc_geometry=1024x768
 
+## Desktop configuration
+# Configure JWM desktop manager along with VNC
+configure_desktop = true
