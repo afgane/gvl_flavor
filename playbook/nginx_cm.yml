@@ -4,7 +4,7 @@
 #
 - hosts: nectar
   vars:
-    build_id: 20140407b03
+    build_id: 20140507b01
     install_dir: /usr/nginx
     work_dir: /tmp/nginx
     log_dir: /var/log/nginx
@@ -30,7 +30,7 @@
         --http-fastcgi-temp-path={{ modules_dir }}/fastcgi_temp
         --http-uwsgi-temp-path={{ modules_dir }}/uwsgi_temp
         --http-scgi-temp-path={{ modules_dir }}/scgi_temp
-        --user=root --group=root
+        --user=galaxy --group=galaxy
         --with-http_ssl_module
         --add-module=../nginx_upload_module
         --add-module=../ngx_http_auth_pam_module-{{ nginx_http_auth_pam_module_version }}
