@@ -86,7 +86,7 @@ desktop:
   ubuntu_lucid:
     - rubygems
 desktop-cloud:
-  - jwm
+  - xfce4
   - vnc4server
   - firefox
 programming:
