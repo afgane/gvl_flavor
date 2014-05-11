@@ -106,6 +106,6 @@
         chdir={{ work_dir }}/nginx-{{ nginx_version }}-dest creates={{ work_dir }}/gxy_nginx-{{ nginx_version }}-{{ build_id }}.gxy-x86_64.rpm
     when: ansible_os_family == "RedHat"
   - name: Create deb
-    command: fpm -s dir -t deb -n GVL-nginx -v {{ nginx_version }}-gvl{{ build_id }}+{{ ansible_lsb['codename'] }} -p {{ work_dir }}/gvl-nginx_{{ nginx_version }}-gvl{{ build_id }}+{{ ansible_lsb['codename'] }}_amd64.deb {{ fpm_args }} usr var
+    command: fpm -s dir -t deb -n GVL-nginx -v {{ nginx_version }}-gvl{{ build_id }}-{{ ansible_lsb['codename'] }} -p {{ work_dir }}/gvl-nginx_{{ nginx_version }}-gvl{{ build_id }}+{{ ansible_lsb['codename'] }}_amd64.deb {{ fpm_args }} usr var
         chdir={{ work_dir }}/nginx-{{ nginx_version }}-dest creates={{ work_dir }}/gvl-nginx-{{ nginx_version }}-gvl{{ build_id }}-{{ ansible_lsb['codename'] }}-amd64.deb
     when: ansible_os_family == "Debian"
