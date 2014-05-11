@@ -74,9 +74,9 @@ class GVLFlavor(Flavor):
             run("sed -i 's/\[USERNAME\]/%(USERNAME)s/g'  gvl-scf/sites/default/settings.php" % vars)
             run("sed -i 's/\[PASSWORD\]/%(PASSWORD)s/g'  gvl-scf/sites/default/settings.php" % vars)
 #            run("sudo sed -i 's/\#write_enable=YES/write_enable=YES/g'  /etc/vsftpd.conf" )
-            
-            
-            
+
+
+
             run("sudo sed -i 's/cgi\.fix_pathinfo=0/cgi\.fix_pathinfo=1/g'  /etc/php5/fpm/php.ini")
 
             run("chmod 770 gvl-scf/sites/default/settings.php")
@@ -116,12 +116,6 @@ class GVLFlavor(Flavor):
             "/usr/nginx/sbin:/mnt/galaxy/tools/bin:$PATH")
         env.logger.debug("Amending the PATH with {0}".format(path_additions))
         _add_to_profiles(path_additions, ['/etc/bash.bashrc'])
-        # Seed the history with frequently used commands
-        env.logger.debug("Setting bash history")
-        local = os.path.join(env.config_dir, os.pardir, "installed_files",
-            "bash_history")
-        remote = os.path.join('/home', 'ubuntu', '.bash_history')
-        put(local, remote, mode=0660, use_sudo=True)
         # Install ipython profiles
         users = ['ubuntu', 'galaxy']
         for user in users:
@@ -161,6 +155,6 @@ class GVLFlavor(Flavor):
         url = ("http://sourceforge.net/projects/modules/files/Modules/"\
                "modules-{0}/{1}/download").format(env.environment_modules_version, filename)
         _get_install(url, self.env, self._install_modules_configure_make, tar_file_name=filename)
-        
+
 
 env.flavor = GVLFlavor(env)
