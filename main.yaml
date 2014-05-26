@@ -5,6 +5,7 @@
 # installed.
 packages:
   - minimal
+  - libraries
   # - desktop
   # - programming
   # - distributed
@@ -36,7 +37,7 @@ packages:
   # - bio_visualization
   # - bio_utils
   # - phylogeny
-  # - galaxy
+  - galaxy
   # - galaxy_tools
   - cloudman
 libraries:
@@ -45,3 +46,7 @@ libraries:
   - python-libs
   - r-libs
   # - ruby-libs
+custom_ignore:
+  - brew
+  - chef_recipes
+  - puppet-classes

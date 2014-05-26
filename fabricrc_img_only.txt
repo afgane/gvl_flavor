@@ -11,7 +11,7 @@ flavor_dir = gvl.gvlflavor
 # -- Details about the operating system
 ## Ubuntu
 distribution = ubuntu
-dist_name = precise
+dist_name = trusty
 ## Centos
 #distribution = centos
 ## Debian
@@ -22,7 +22,7 @@ dist_name = precise
 
 # Unset to avoid CloudBioLinux customizations like setup scripts;
 # or set to different edition to get specific customizations
-edition = cloudbiolinux
+# edition = cloudbiolinux
 
 # Whether to clean the system for EC2 AMI preparation;
 # do not set on vagrant or local machines

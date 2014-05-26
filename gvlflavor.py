@@ -75,8 +75,6 @@ class GVLFlavor(Flavor):
             run("sed -i 's/\[PASSWORD\]/%(PASSWORD)s/g'  gvl-scf/sites/default/settings.php" % vars)
 #            run("sudo sed -i 's/\#write_enable=YES/write_enable=YES/g'  /etc/vsftpd.conf" )
 
-
-
             run("sudo sed -i 's/cgi\.fix_pathinfo=0/cgi\.fix_pathinfo=1/g'  /etc/php5/fpm/php.ini")
 
             run("chmod 770 gvl-scf/sites/default/settings.php")
@@ -112,10 +110,15 @@ class GVLFlavor(Flavor):
         Setup a custom user-level env
         """
         # Add commond directories to PATH
-        path_additions = ("export PATH=/usr/lib/postgresql/9.1/bin:" +
+        path_additions = ("export PATH=/usr/lib/postgresql/9.3/bin:" +
             "/usr/nginx/sbin:/mnt/galaxy/tools/bin:$PATH")
         env.logger.debug("Amending the PATH with {0}".format(path_additions))
         _add_to_profiles(path_additions, ['/etc/bash.bashrc'])
+        # Add files expected by the default GVL nginx.conf
+        env.safe_sudo('touch /usr/nginx/conf/commandline_utilities_http.conf')
+        env.safe_sudo('touch /usr/nginx/conf/commandline_utilities_https.conf')
+        # This path won't get bundled into the image but useful during testing
+        env.safe_sudo('mkdir -p %(nginx_upload_store_path)s' % env)
         # Install ipython profiles
         users = ['ubuntu', 'galaxy']
         for user in users:
@@ -137,8 +140,8 @@ class GVLFlavor(Flavor):
         """
         # currently putting module files in directory structure under env.system_install
         # it would be better to store them on a filesystem shared with worker nodes; this is harder
-        env.safe_run("export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:%s/lib/pkgconfig && " \
-                 "./configure --prefix=%s " %
+        env.safe_run("export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:%s/lib/pkgconfig && "
+                 "export CPPFLAGS='-DUSE_INTERP_ERRORLINE' && ./configure --prefix=%s " %
                  (env.system_install, env.system_install))
         run('make')
         env.safe_sudo('make install')
@@ -152,7 +155,7 @@ class GVLFlavor(Flavor):
         """
         env.environment_modules_version = "3.2.10"
         filename = "modules-{0}.tar.gz".format(env.environment_modules_version)
-        url = ("http://sourceforge.net/projects/modules/files/Modules/"\
+        url = ("http://sourceforge.net/projects/modules/files/Modules/"
                "modules-{0}/{1}/download").format(env.environment_modules_version, filename)
         _get_install(url, self.env, self._install_modules_configure_make, tar_file_name=filename)
 

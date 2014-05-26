@@ -284,11 +284,11 @@ databases:
     - mysql-client
     - mysql-common
     - mysql-server
-    - libmysqlclient15-dev
+    - libmysqlclient-dev
   postgres:
     - postgresql
     - postgresql-client
-    - postgresql-plpython-9.1
+    - postgresql-plpython-9.3
     # - postgresql-plperl-9.1
     - libpq-dev
   sqlite:
@@ -488,26 +488,26 @@ cloudman:
     - nfs-common
     # Enable OpenMPI
     - libopenmpi-dev
-    - libopenmpi1.3
+    - libopenmpi1.6
     - openmpi-bin
     - openmpi-common
     # Needed to enable updates for Galaxy
     # - mercurial ## Included in minimal
     # Required for compiling ProFTPd (must match installed PostgreSQL version!)
-    - postgresql-server-dev-9.1
+    - postgresql-server-dev-9.3
     # Actually not sure what of the following is really needed
     - libboost-all-dev
     - libreadline6-dev
     # Required for s3fs
     - libfuse-dev
     - libfuse2
-    - fuse-utils
+    - fuse
     - pkg-config
     - libcurl4-openssl-dev
     - libxml2-dev
     - mime-support
     # Required to get HTCondor
-    - condor
+    # - condor
     - glusterfs-client
     # Add some security against brute force ssh attacks
     - fail2ban

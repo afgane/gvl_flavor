@@ -9,10 +9,12 @@ bio_nextgen:
   analysis:
     - samtools
 cloudman:
-  - nginx
-  - proftpd
-  - sge
-  - novnc
+  - cloudman
+  ## install_cloudman method will initiate installation of all the following items
+  # - nginx
+  # - proftpd
+  # - sge
+  # - novnc
 # galaxy:
 #   - galaxy_webapp
 # galaxy_tools:
