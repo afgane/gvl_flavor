@@ -138,34 +138,36 @@ programming:
     - libfuse-dev
     - fuse-utils
   libraries:
-    - libatlas-base-dev
+    # - libatlas-base-dev
     #- libatlas-dev
-    - libblas-dev
-    - liblapack-dev
-    - libeigen3-dev
-    - tcl-dev
-    - tk-dev
-    - imagemagick
-    - pdfjam
-    - libsparsehash-dev
-    - xvfb
-    - libboost-dev
-    - libboost-python-dev
-    - libboost-thread-dev
-    - libgd2-xpm
-    - libgd2-xpm-dev
-    - libgnomecanvas2-0
-    - libgnomecanvas2-dev
-    - libgnomevfs2-0
-    - libgnomevfs2-dev
-    - libgnomeui-0
-    - libgnomeui-dev
-    - libpango1.0-0
-    - libpango1.0-dev
-    - libx11-dev
-    - libfreetype6-dev
-    - libcgi-session-perl
-    - libclass-base-perl
+    # - libblas-dev
+    # - liblapack-dev
+    # - libeigen3-dev
+    - libc6-dev
+    - libzip-dev
+    - libbz2-dev
+    - zlib1g-dev
+    - libcurl4-openssl-dev
+    - libgsl0-dev
+    - libgsl0ldbl
+    - gsl-bin
+    - mime-support
+    - libncurses5-dev
+    - libpcre3-dev
+    - libpng12-dev
+    - libreadline-dev
+    - libssl-dev
+    - uuid
+    - uuid-dev
+    - libxml2
+    - libxml2-dev
+    - libxslt1-dev
+    - libxslt1.1
+    - xz-utils
+    - liblzma-dev
+    - zlib1g-dev
+    # - libnetcdf-dev
+    - libffi-dev
   packaging:
     - build-essential
     - devscripts
