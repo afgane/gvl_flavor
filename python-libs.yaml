@@ -5,9 +5,11 @@ pypi:
   # infrastructure
   - amqplib
   - BeautifulSoup
+  - bioblend
   - boto
   - distribute
   - fabric
+  - fusepy
   - ipython
   # - Logbook
   # - lxml
